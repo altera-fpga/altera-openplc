@@ -1,0 +1,234 @@
+(*
+ * RTmotion function blocks implementation
+ *
+ *
+ * -----------
+ *)
+
+
+FUNCTION_BLOCK MC_Power
+  VAR_INPUT
+    Axis : INT;
+    Enable : BOOL;
+    EnablePositive : BOOL;
+    EnableNegative : BOOL;
+  END_VAR
+  VAR_OUTPUT
+    Status : BOOL;
+    Valid : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_Halt
+  VAR_INPUT
+    Axis : INT;
+    Execute : BOOL;
+    Deceleration : REAL;
+    Jerk : REAL;
+    BufferMode : INT;
+  END_VAR
+  VAR_OUTPUT
+    Done : BOOL;
+    Busy : BOOL;
+    Active : BOOL;
+    CommandAborted : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_Stop
+  VAR_INPUT
+    Axis : INT;
+    Execute : BOOL;
+    Deceleration : REAL;
+    Jerk : REAL;
+  END_VAR
+  VAR_OUTPUT
+    Done : BOOL;
+    Busy : BOOL;
+    CommandAborted : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_Reset
+  VAR_INPUT
+    Axis : INT;
+    Execute : BOOL;
+  END_VAR
+  VAR_OUTPUT
+    Done : BOOL;
+    Busy : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_MoveVelocity
+  VAR_INPUT
+    Axis : INT;
+    Execute : BOOL;
+    ContinuousUpdate : BOOL;
+    Velocity : REAL;
+    Acceleration : REAL;
+    Deceleration : REAL;
+    Jerk : REAL;
+    Direction : INT;
+    BufferMode : INT;
+  END_VAR
+  VAR_OUTPUT
+    InVelocity : BOOL;
+    Busy : BOOL;
+    Active : BOOL;
+    CommandAborted : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_MoveRelative
+  VAR_INPUT
+    Axis : INT;
+    Execute : BOOL;
+    ContinuousUpdate : BOOL;
+    Distance : REAL;
+    Velocity : REAL;
+    Acceleration : REAL;
+    Deceleration : REAL;
+    Jerk : REAL;
+    BufferMode : INT;
+  END_VAR
+  VAR_OUTPUT
+    Done : BOOL;
+    Busy : BOOL;
+    Active : BOOL;
+    CommandAborted : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_MoveAbsolute
+  VAR_INPUT
+    Axis : INT;
+    Execute : BOOL;
+    ContinuousUpdate : BOOL;
+    Position : REAL;
+    Velocity : REAL;
+    Acceleration : REAL;
+    Deceleration : REAL;
+    Jerk : REAL;
+    Direction : INT;
+    BufferMode : INT;
+  END_VAR
+  VAR_OUTPUT
+    Done : BOOL;
+    Busy : BOOL;
+    Active : BOOL;
+    CommandAborted : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_MoveAdditive
+  VAR_INPUT
+    Axis : INT;
+    Execute : BOOL;
+    ContinuousUpdate : BOOL;
+    Distance : REAL;
+    Velocity : REAL;
+    Acceleration : REAL;
+    Deceleration : REAL;
+    Jerk : REAL;
+    BufferMode : INT;
+  END_VAR
+  VAR_OUTPUT
+    Done : BOOL;
+    Busy : BOOL;
+    Active : BOOL;
+    CommandAborted : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_ReadActualVelocity
+  VAR_INPUT
+    Axis : INT;
+    Enable : BOOL;
+  END_VAR
+  VAR_OUTPUT
+    Valid : BOOL;
+    Busy : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+    Velocity : REAL;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_ReadActualPosition
+  VAR_INPUT
+    Axis : INT;
+    Enable : BOOL;
+  END_VAR
+  VAR_OUTPUT
+    Valid : BOOL;
+    Busy : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+    Position : REAL;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_ReadAxisError
+  VAR_INPUT
+    Axis : INT;
+    Enable : BOOL;
+  END_VAR
+  VAR_OUTPUT
+    Valid : BOOL;
+    Busy : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+    AxisErrorID : WORD;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK MC_ReadStatus
+  VAR_INPUT
+    Axis : INT;
+    Enable : BOOL;
+  END_VAR
+  VAR_OUTPUT
+    Valid : BOOL;
+    Busy : BOOL;
+    Error : BOOL;
+    ErrorID : WORD;
+		ErrorStop : BOOL;
+    Disabled : BOOL;
+    Stopping : BOOL;
+    Homing : BOOL;
+    Standstill : BOOL;
+    DiscreteMotion : BOOL;
+    ContinuousMotion : BOOL;
+    SynchronizedMotion : BOOL;
+  END_VAR
+  Axis := Axis;
+END_FUNCTION_BLOCK
+

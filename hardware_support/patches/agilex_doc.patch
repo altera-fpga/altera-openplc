@@ -1,0 +1,45 @@
+From 5b885a31b54bf7c818c245ca6f5c0280d0c0ca73 Mon Sep 17 00:00:00 2001
+From: Scott Ware <scott.r.ware@intel.com>
+Date: Tue, 26 Nov 2024 12:53:56 +0000
+Subject: [PATCH] Agilex DoC support
+
+Signed-off-by: Scott Ware <scott.r.ware@intel.com>
+---
+ webserver/scripts/change_hardware_layer.sh | 7 +++++++
+ webserver/webserver.py                     | 2 ++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/webserver/scripts/change_hardware_layer.sh b/webserver/scripts/change_hardware_layer.sh
+index 12f7a5d..ed0ab08 100755
+--- a/webserver/scripts/change_hardware_layer.sh
++++ b/webserver/scripts/change_hardware_layer.sh
+@@ -136,6 +136,13 @@ elif [ "$1" == "piplc" ]; then
+     echo rpi > ../scripts/openplc_platform
+     echo piplc > ../scripts/openplc_driver
+ 
++elif [ "$1" == "agilex_doc" ]; then
++    echo "Activating Agilex Drive-on-Chip driver"
++    cp ./hardware_layers/agilex_doc.cpp ./hardware_layer.cpp
++    echo "Setting Platform"
++    echo linux > ../scripts/openplc_platform
++    echo agilex_doc > ../scripts/openplc_driver
++
+ else
+     echo "Error: Invalid hardware layer"
+ fi
+diff --git a/webserver/webserver.py b/webserver/webserver.py
+index b4f8ecd..7b9eda7 100644
+--- a/webserver/webserver.py
++++ b/webserver/webserver.py
+@@ -1748,6 +1748,8 @@ def hardware():
+             else: return_str += "<option value='sl_rp4'>SL-RP4</option>"
+             if (current_driver == "piplc"): return_str += "<option selected='selected' value='piplc'>Binary-6 PiPLC</option>"
+             else: return_str += "<option value='piplc'>Binary-6 PiPLC</option>"
++            if (current_driver == "agilex_doc"): return_str += "<option selected='selected' value='agilex_doc'>Agilex Drive-on-Chip</option>"
++            else: return_str += "<option value='agilex_doc'>Agilex Drive-on-Chip</option>"
+             return_str += """
+                         </select>
+                         <br>
+-- 
+2.43.0
+
